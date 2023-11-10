@@ -31,6 +31,12 @@
   border-radius: 50%;
 }
 
+.deleteButton {
+  background: none;
+  border: none;
+  color: var(--gray-300);
+}
+
 
 
 

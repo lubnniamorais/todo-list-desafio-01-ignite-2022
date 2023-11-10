@@ -1,24 +1,36 @@
+import { ITask } from '../../App';
 import { Task } from '../Task';
+
 import styles from './tasks.module.css';
 
-function Tasks() {
+interface ITasksProps {
+  tasks: ITask[];
+}
+
+function Tasks({ tasks }: ITasksProps) {
+  const tasksQuantity = tasks.length;
+  const completedTasks = tasks.filter((task) => task.isCompleted).length;
+
   return (
     <section className={styles.tasks}>
       <header className={styles.header}>
         <div>
           <p>Tarefas criadas</p>
-          <span>10</span>
+          <span>{tasksQuantity}</span>
         </div>
 
         <div>
           <p className={styles.textPurple}>Concluídas</p>
-          <span>2 de 10</span>
+          <span>
+            {completedTasks} de {tasksQuantity}
+          </span>
         </div>
       </header>
 
       <div className={styles.list}>
-        <Task />
-        <Task />
+        {tasks.map((task) => {
+          return <Task key={task.id} task={task} />;
+        })}
       </div>
     </section>
   );

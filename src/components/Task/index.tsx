@@ -1,20 +1,24 @@
+import { TbTrash } from 'react-icons/tb';
+import { ITask } from '../../App';
+
 import styles from './task.module.css';
 
-function Task() {
+interface ITaskProps {
+  task: ITask;
+}
+
+function Task({ task }: ITaskProps) {
   return (
     <div className={styles.task}>
       <button className={styles.checkContainer}>
         <div />
       </button>
 
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi iusto
-        accusamus repellat perferendis enim reprehenderit vero non, praesentium
-        recusandae fugiat neque officia maiores sequi, ex fuga, debitis nihil
-        nesciunt. Sint.
-      </p>
+      <p>{task.title}</p>
 
-      <button>apagar</button>
+      <button className={styles.deleteButton}>
+        <TbTrash size={20} />
+      </button>
     </div>
   );
 }
