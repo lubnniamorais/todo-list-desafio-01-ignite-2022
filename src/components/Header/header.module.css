@@ -33,7 +33,7 @@
   color: var(--gray-300);
 }
 
-.newTaskForm button {
+.newTaskForm button[type=submit] {
   height: 100%;
   padding: 0 1rem;
   background: var(--blue-dark);
@@ -45,6 +45,15 @@
   gap: 0.375rem;
   font-weight: 700;
   font-size: 0.875rem;
+}
+
+.newTaskForm button[type=submit]:not(:disabled):hover {
+  background: var(--blue);
+}
+
+.newTaskForm button[type=submit]:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 

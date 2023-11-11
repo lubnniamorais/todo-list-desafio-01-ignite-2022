@@ -5,9 +5,10 @@ import styles from './tasks.module.css';
 
 interface ITasksProps {
   tasks: ITask[];
+  onDeleteTask: (id: string) => void;
 }
 
-function Tasks({ tasks }: ITasksProps) {
+function Tasks({ tasks, onDeleteTask }: ITasksProps) {
   const tasksQuantity = tasks.length;
   const completedTasks = tasks.filter((task) => task.isCompleted).length;
 
@@ -29,7 +30,7 @@ function Tasks({ tasks }: ITasksProps) {
 
       <div className={styles.list}>
         {tasks.map((task) => {
-          return <Task key={task.id} task={task} />;
+          return <Task key={task.id} task={task} onDeleteTask={onDeleteTask} />;
         })}
       </div>
     </section>

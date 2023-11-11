@@ -22,10 +22,27 @@ function App() {
     },
   ]);
 
+  function addTask(taskTitle: string) {
+    setTasks([
+      ...tasks,
+      {
+        id: crypto.randomUUID(),
+        title: taskTitle,
+        isCompleted: false,
+      },
+    ]);
+  }
+
+  function deleteTaskById(id: string) {
+    const newTasks = tasks.filter((task) => task.id !== id);
+
+    setTasks(newTasks);
+  }
+
   return (
     <>
-      <Header />
-      <Tasks tasks={tasks} />
+      <Header onAddTask={addTask} />
+      <Tasks tasks={tasks} onDeleteTask={deleteTaskById} />
     </>
   );
 }
